@@ -1,0 +1,16 @@
+{
+  "appTitle": "Eclipse",
+  "musicPlayer": "Reproductor de Música",
+  "settingsTitle": "Configuración Avanzada",
+  "folderSectionTitle": "Seleccionar carpeta de música",
+  "folderSectionDesc": "Selecciona la carpeta donde tienes tu música",
+  "selectFolder": "Seleccionar carpeta",
+  "language": "Idioma",
+  "noSongs": "No se encontraron canciones",
+  "play": "Reproducir",
+  "pause": "Pausar",
+  "next": "Siguiente",
+  "previous": "Anterior",
+  "shuffle": "Aleatorio",
+  "repeat": "Repetir"
+}

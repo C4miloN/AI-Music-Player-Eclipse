@@ -1,0 +1,16 @@
+{
+  "appTitle": "Eclipse",
+  "musicPlayer": "Musikplayer",
+  "settingsTitle": "Erweiterte Einstellungen",
+  "folderSectionTitle": "Musikordner auswählen",
+  "folderSectionDesc": "Wählen Sie den Ordner aus, in dem sich Ihre Musik befindet",
+  "selectFolder": "Ordner auswählen",
+  "language": "Sprache",
+  "noSongs": "Keine Songs gefunden",
+  "play": "Abspielen",
+  "pause": "Pause",
+  "next": "Nächster",
+  "previous": "Vorheriger",
+  "shuffle": "Zufall",
+  "repeat": "Wiederholen"
+}

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eclipse - Reproductor de Música</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 id="app-title">Eclipse</h1>
+            <div class="view-selector">
+                <button id="grid-view-btn" class="btn-icon" title="Vista de cuadrícula">
+                    <i class="fas fa-th"></i>
+                </button>
+                <button id="list-view-btn" class="btn-icon" title="Vista de lista">
+                    <i class="fas fa-list"></i>
+                </button>
+                <button id="table-view-btn" class="btn-icon" title="Vista de tabla">
+                    <i class="fas fa-table"></i>
+                </button>
+            </div>
+            <button id="settings-btn" class="btn"><i class="fas fa-cog"></i> Configuración</button>
+        </header>
+
+        <div class="controls-top">
+            <div class="search-container">
+                <i class="fas fa-search"></i>
+                <input type="text" id="search-input" class="search-input" placeholder="Buscar canciones...">
+            </div>
+            
+            <div class="filter-container">
+                <select id="sort-select" class="filter-select">
+                    <option value="title-asc">Título (A-Z)</option>
+                    <option value="title-desc">Título (Z-A)</option>
+                    <option value="artist-asc">Artista (A-Z)</option>
+                    <option value="artist-desc">Artista (Z-A)</option>
+                    <option value="genre-asc">Género (A-Z)</option>
+                    <option value="genre-desc">Género (Z-A)</option>
+                    <option value="year-asc">Año (ascendente)</option>
+                    <option value="year-desc">Año (descendente)</option>
+                    <option value="rating-desc">Puntuación (alta a baja)</option>
+                    <option value="rating-asc">Puntuación (baja a alta)</option>
+                    <option value="date-added">Fecha de agregado</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="music-library" id="music-library">
+            <div class="welcome-message" id="welcome-message">
+                <h2>Bienvenido a Eclipse</h2>
+                <p>Tu reproductor de música personalizable. Selecciona una carpeta con tu música para comenzar a disfrutar de todas las funciones.</p>
+                
+                <button id="select-folder-btn" class="btn"><i class="fas fa-folder-open"></i> Seleccionar carpeta de música</button>
+                
+                <div class="welcome-features">
+                    <div class="welcome-feature">
+                        <i class="fas fa-paint-brush"></i>
+                        <h3>Personalizable</h3>
+                        <p>Cambia colores, fondos y más</p>
+                    </div>
+                    <div class="welcome-feature">
+                        <i class="fas fa-sliders-h"></i>
+                        <h3>Vistas múltiples</h3>
+                        <p>Elige cómo ver tu biblioteca</p>
+                    </div>
+                    <div class="welcome-feature">
+                        <i class="fas fa-star"></i>
+                        <h3>Sistema de puntuación</h3>
+                        <p>Califica tus canciones favoritas</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="player" id="player">
+        <div class="player-main">
+            <div class="now-playing">
+                <div class="now-playing-art" id="now-playing-art">
+                    <div class="vinyl-overlay">Música</div>
+                </div>
+                <div class="now-playing-info">
+                    <div id="now-playing-title" class="now-playing-title">Selecciona una canción</div>
+                    <div id="now-playing-artist" class="now-playing-artist">Artista</div>
+                </div>
+            </div>
+            
+            <div class="player-controls">
+                <button id="shuffle-btn" class="btn-icon" title="Reproducción aleatoria">
+                    <i class="fas fa-random"></i>
+                </button>
+                <button id="prev-btn" class="control-btn"><i class="fas fa-step-backward"></i></button>
+                <button id="play-btn" class="control-btn play-btn"><i class="fas fa-play"></i></button>
+                <button id="next-btn" class="control-btn"><i class="fas fa-step-forward"></i></button>
+                <button id="repeat-btn" class="btn-icon" title="Repetir">
+                    <i class="fas fa-redo"></i>
+                </button>
+                
+                <div class="volume-control">
+                    <button id="volume-btn" class="volume-btn"><i class="fas fa-volume-up"></i></button>
+                    <input type="range" id="volume-slider" class="volume-slider" min="0" max="100" value="80">
+                </div>
+            </div>
+        </div>
+        
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+            <div class="time">
+                <span id="current-time">0:00</span>
+                <span id="duration">0:00</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de configuración -->
+    <div id="settings-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Configuración Avanzada</h2>
+                <button class="close-btn" id="close-settings-modal"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <!-- Sección de carpeta movida al principio -->
+            <div class="config-section folder-section">
+                <h3>Seleccionar carpeta de música</h3>
+                <p>Selecciona la carpeta donde tienes tu música</p>
+                <input type="file" id="folder-input" webkitdirectory directory multiple>
+                <label for="folder-input" class="folder-label">Seleccionar carpeta</label>
+                <div id="selected-folder" class="folder-path">No se ha seleccionado ninguna carpeta</div>
+            </div>
+            
+            <!-- Nueva sección de idioma -->
+            <div class="config-section">
+                <h3>Idioma</h3>
+                <div class="language-selector">
+                    <label for="language-select">Idioma:</label>
+                    <select id="language-select">
+                        <option value="es">Español</option>
+                        <option value="en">English</option>
+                        <option value="fr">Français</option>
+                        <option value="de">Deutsch</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="config-section">
+                <h3>Información de la aplicación</h3>
+                <div class="config-option">
+                    <label for="app-title">Nombre de la app:</label>
+                    <input type="text" id="app-title" value="Eclipse">
+                </div>
+            </div>
+            
+            <div class="config-section">
+                <h3>Personalizar colores</h3>
+                <div class="config-option">
+                    <label for="primary-color">Color principal:</label>
+                    <input type="color" id="primary-color" value="#1db954">
+                </div>
+                <div class="config-option">
+                    <label for="secondary-color">Color secundario:</label>
+                    <input type="color" id="secondary-color" value="#191414">
+                </div>
+                <div class="config-option">
+                    <label for="background-color">Color de fondo:</label>
+                    <input type="color" id="background-color" value="#121212">
+                </div>
+                <div class="config-option">
+                    <label for="text-color">Color de texto:</label>
+                    <input type="color" id="text-color" value="#ffffff">
+                </div>
+                <div class="config-option">
+                    <label for="vinyl-color-1">Color de vinilo (primario):</label>
+                    <input type="color" id="vinyl-color-1" value="#000000">
+                </div>
+                <div class="config-option">
+                    <label for="vinyl-color-2">Color de vinilo (secundario):</label>
+                    <input type="color" id="vinyl-color-2" value="#333333">
+                </div>
+            </div>
+            
+            <div class="config-section">
+                <h3>Imagen de fondo</h3>
+                <div class="config-option">
+                    <label for="background-image">Seleccionar imagen:</label>
+                    <input type="file" id="background-image-input" accept="image/*">
+                    <button id="background-image-btn" class="btn">Seleccionar</button>
+                </div>
+                <div class="config-option">
+                    <label for="remove-background">Quitar imagen de fondo:</label>
+                    <button id="remove-background" class="btn">Eliminar fondo</button>
+                </div>
+            </div>
+            
+            <div class="config-section">
+                <h3>Opcacidad de elementos</h3>
+                <div class="config-option">
+                    <label for="ui-opacity">Opacidad interfaz:</label>
+                    <input type="range" id="ui-opacity" min="0.1" max="1" step="0.1" value="0.9">
+                    <span class="value-display" id="ui-opacity-value">90%</span>
+                </div>
+                <div class="config-option">
+                    <label for="card-opacity">Opacidad tarjetas:</label>
+                    <input type="range" id="card-opacity" min="0.1" max="1" step="0.1" value="0.8">
+                    <span class="value-display" id="card-opacity-value">80%</span>
+                </div>
+                <div class="config-option">
+                    <label for="button-opacity">Opacidad botones:</label>
+                    <input type="range" id="button-opacity" min="0.1" max="1" step="0.1" value="0.9">
+                    <span class="value-display" id="button-opacity-value">90%</span>
+                </div>
+            </div>
+            
+            <div class="config-section">
+                <h3>Border Radius</h3>
+                <div class="config-option">
+                    <label for="border-radius">Radio de esquinas:</label>
+                    <input type="range" id="border-radius" min="0" max="20" step="1" value="8">
+                    <span class="value-display" id="border-radius-value">8px</span>
+                </div>
+            </div>
+            
+            <div class="config-section">
+                <h3>Gestionar configuración</h3>
+                <button id="save-config" class="btn">Guardar configuración</button>
+                <button id="export-config" class="btn">Exportar configuración</button>
+                <button id="import-config" class="btn">Importar configuración</button>
+                <input type="file" id="config-file-input" accept=".json" style="display: none;">
+            </div>
+            <span>v.1.0 Beta By <a href="https://github.com/C4miloN" target="_blank">🍊 C4miloN</a> + 🐋 Deepseek</span>
+            <a href="https://paypal.me/C4miloN">Donation</a>
+        </div>
+    </div>
+
+    <!-- Modal de edición de metadatos -->
+    <div id="edit-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Editar metadatos</h2>
+                <button class="close-btn" id="close-edit-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <form id="metadata-form">
+                <div id="cover-preview-container">
+                    <img id="cover-preview" class="cover-preview" src="" alt="Vista previa de portada">
+                </div>
+                
+                <div class="form-group">
+                    <label for="edit-title">Título:</label>
+                    <input type="text" id="edit-title" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="edit-artist">Artista:</label>
+                    <input type="text" id="edit-artist" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="edit-genre">Género:</label>
+                    <input type="text" id="edit-genre">
+                </div>
+                
+                <div class="form-group">
+                    <label for="edit-year">Año:</label>
+                    <input type="number" id="edit-year" min="1900" max="2030">
+                </div>
+                
+                <div class="edit-rating">
+                    <span class="edit-star" data-rating="1">★</span>
+                    <span class="edit-star" data-rating="2">★</span>
+                    <span class="edit-star" data-rating="3">★</span>
+                    <span class="edit-star" data-rating="4">★</span>
+                    <span class="edit-star" data-rating="5">★</span>
+                    <input type="hidden" id="edit-rating" value="0">
+                </div>
+                
+                <div class="form-group">
+                    <label for="edit-collaborators">Colaboradores:</label>
+                    <textarea id="edit-collaborators"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="edit-cover">Cambiar portada:</label>
+                    <input type="file" id="edit-cover" accept="image/*">
+                </div>
+                
+                <button type="submit" class="btn">Guardar cambios</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

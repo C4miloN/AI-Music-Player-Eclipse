@@ -1,0 +1,16 @@
+{
+  "appTitle": "Eclipse",
+  "musicPlayer": "Lecteur de Musique",
+  "settingsTitle": "Paramètres Avancés",
+  "folderSectionTitle": "Sélectionner le dossier de musique",
+  "folderSectionDesc": "Sélectionnez le dossier où se trouve votre musique",
+  "selectFolder": "Sélectionner le dossier",
+  "language": "Langue",
+  "noSongs": "Aucune chanson trouvée",
+  "play": "Lire",
+  "pause": "Pause",
+  "next": "Suivant",
+  "previous": "Précédent",
+  "shuffle": "Aléatoire",
+  "repeat": "Répéter"
+}

@@ -1,0 +1,26 @@
+{
+  "colors": {
+    "primary": "#ED5D1AFF",
+    "secondary": "#191414",
+    "background": "#121212",
+    "text": "#ffffff"
+  },
+  "vinylColors": {
+    "color1": "#000000",
+    "color2": "#333333"
+  },
+  "backgroundImage": "none",
+  "uiOpacity": 0.9,
+  "cardOpacity": 0.8,
+  "buttonOpacity": 0.9,
+  "borderRadius": 8,
+  "currentView": "grid",
+  "appTitle": "Eclipse",
+  "musicFolder": "",
+  "musicFolderPath": "",
+  "volume": 80,
+  "shuffle": false,
+  "repeat": 0,
+  "sortBy": "title-asc",
+  "language": "es"
+}

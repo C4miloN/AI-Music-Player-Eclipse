@@ -1,0 +1,16 @@
+{
+  "appTitle": "Eclipse",
+  "musicPlayer": "Music Player",
+  "settingsTitle": "Advanced Settings",
+  "folderSectionTitle": "Select music folder",
+  "folderSectionDesc": "Select the folder where your music is located",
+  "selectFolder": "Select folder",
+  "language": "Language",
+  "noSongs": "No songs found",
+  "play": "Play",
+  "pause": "Pause",
+  "next": "Next",
+  "previous": "Previous",
+  "shuffle": "Shuffle",
+  "repeat": "Repeat"
+}
