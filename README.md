@@ -138,9 +138,7 @@ We welcome contributions! Please feel free to submit pull requests or open issue
 
 If you find Eclipse Music Player useful and would like to support its development, consider making a donation:
 
-**BTC**: `1A2b3C4d5E6f7G8h9I0jK1lM2nO3pQ4rS5tU`  
-**ETH**: `0x1a2B3c4D5e6F7g8H9i0Jk1lM2nO3pQ4rS5tU6v`  
-**PayPal**: [donate@example.com](https://paypal.me/donateexample)
+**PayPal**: [donate](https://www.paypal.com/paypalme/C4miloN)
 
 Your support helps ensure continued development and improvement of Eclipse Music Player!
 
@@ -152,5 +150,6 @@ Your support helps ensure continued development and improvement of Eclipse Music
 ---
 
 **v.1.0 Beta By C4miloN + Deepseek**
+
 
 Thank you for using Eclipse Music Player! We hope you enjoy your music experience.
