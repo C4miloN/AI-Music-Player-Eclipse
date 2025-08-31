@@ -138,7 +138,7 @@ We welcome contributions! Please feel free to submit pull requests or open issue
 
 If you find Eclipse Music Player useful and would like to support its development, consider making a donation:
 
-**PayPal**: [donate](https://www.paypal.com/paypalme/C4miloN)
+**PayPal**: [donate](https://www.paypal.me/C4miloN)
 
 Your support helps ensure continued development and improvement of Eclipse Music Player!
 
@@ -153,3 +153,4 @@ Your support helps ensure continued development and improvement of Eclipse Music
 
 
 Thank you for using Eclipse Music Player! We hope you enjoy your music experience.
+
